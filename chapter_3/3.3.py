@@ -8,4 +8,4 @@ def right_justify(s):
     print((' ' * spaces) + s)       # print the spaces and string
 
 # call right_justify function
-right_justify('aidan')
+right_justify('supercalifragilisticexpialidocious')
