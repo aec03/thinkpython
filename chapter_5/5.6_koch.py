@@ -16,7 +16,6 @@ def koch(t, x):
         koch(t, x / 4)
 
 
-
 def snowflake(t, x):
     for _ in range(3):
         koch(t, x)
