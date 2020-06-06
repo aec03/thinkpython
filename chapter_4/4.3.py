@@ -2,10 +2,6 @@
 from math import sin, cos, radians
 from swampy.TurtleWorld import TurtleWorld, Turtle, fd, lt, bk, rt
 
-world = TurtleWorld()
-bob = Turtle()
-
-
 def polygon_pie(t, length, sides):
 # draws polygon
     angle = (((sides - 2) * 180) / (sides * 2))         # gets interior angle of polygon and divides it by 2
@@ -19,6 +15,10 @@ def polygon_pie(t, length, sides):
         lt(t, (180 - angle))
         fd(t, slice)
         lt(t, 180)
+
+
+world = TurtleWorld()
+bob = Turtle()
 
 # call polygon_pie function to
 polygon_pie(bob, 100, 9)
