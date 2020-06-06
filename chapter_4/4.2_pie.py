@@ -4,10 +4,10 @@ from swampy.TurtleWorld import TurtleWorld, Turtle, fd, lt, bk, rt
 
 
 def arc(t, r, a):
-    """ draws arc of circle from """
-    # t: turtle
-    # r: radius of circle
-    # a: arc length
+    """ draws arc of circle from
+    t: turtle
+    r: radius of circle
+    a: arc length """
 
     fraction = a/360
     circumference = 2 * r * math.pi
