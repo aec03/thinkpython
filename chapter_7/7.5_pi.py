@@ -6,17 +6,15 @@ def estimate_pi():
     """ uses infinite series formula by Srinivasa Ramanujan to calculate pi """
     k = 0
     x = 0
-    l = 0
     while True:
         # forumla to find 1 / pi
         y = ((((factorial(4 * k) * (1103 + (26390 * k))) * (2 * math.sqrt(2))) / (((factorial(k)** 4) * (396 ** (4 * k))) * 9801)))
 
-        if abs(y - l) < (1e-15):
+        if abs(y) < (1e-15):
             return 1 / x
 
         k += 1
         x = x + y
-        l = y
 
 
 def factorial(x):
