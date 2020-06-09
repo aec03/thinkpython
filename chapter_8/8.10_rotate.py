@@ -14,4 +14,4 @@ def rotate_word(s, n):
 
     return word
 
-print(rotate_word('Uv gurer. Guvf vf abg ernyyl wbxr. Whfg univat fbzr sha jvgu gubfr jub pna\'g ebg13 na negvpyr. Gb or ernyyl zrna, sbyybj-hc gb guvf negvpyr jvgu fbzrguvat yvxr "Obl, gung jnf gur shaavrfg wbxr V rire urneq!" Stush', -13))
+print(rotate_word('melon', -10))
