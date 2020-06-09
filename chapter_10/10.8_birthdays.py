@@ -31,7 +31,6 @@ def has_duplicates(t, n):
                 counter += 1
         
             if counter == 2:
-                print(t[i])
                 return True
 
     return False
@@ -39,5 +38,4 @@ def has_duplicates(t, n):
 
 n = 23
 b = birthday_list(n)
-print(b)
 print(has_duplicates(b, n))
