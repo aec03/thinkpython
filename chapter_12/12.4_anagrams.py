@@ -2,17 +2,11 @@
 
 def order_word(s):
     """ takes string and returns string with order characters """
-    t = []
-    word = ''
-
-    for c in s:
-        t.append(c)  
-    
+    t = list(s)
     t.sort()
-    for c in t:
-        word += c
-    
-    return word
+    t = ''.join(t)
+
+    return t
 
 
 def sort_dict(d):
