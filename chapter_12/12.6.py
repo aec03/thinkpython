@@ -8,52 +8,70 @@ def create_dict(filename):
 
     d = {}
 
-    for word in open(filename, 'r'):
-        d[word.strip()] = []
+    with open(filename) as file:
 
-    return d
+        for word in file:
+            d[word.strip()] = []
+
+        return d
+
+
+def create_list(d):
+    """ create sorted list from dict keys """
+    t = []
+
+    for i in d:
+        t.append(i)
+
+    return sorted(t, key=len)
 
 
 def add_word_lists(d):
     """ adds list of words to dictionary """
 
+    d[''] = []
+
     for word in d.keys():
-        for i in range(len(word)):
-            new = word.replace(word[i], '')
-            if new in d:
-                d[word].append(new)
+        if len(word) == 1:
+            d[word] = ['']
+
+        else:
+            for i in range(len(word)):
+                new = word.replace(word[i], '')
+                if new in d and new not in d[word]:
+                    d[word].append(new)
 
     return d
 
-def word_in_word(d):
+
+def word_count(d, t):
     """ takes dict as argument and returns dict of lists """
 
-    known = {'': [''], 'i': [''], 'a': ['']}
-    l = []
-    
-    for word in d:
+    known = {'': 0, 'i': 1, 'a': 1}
+
+    for word in t:
+        l = []
         if len(d[word]) < 1:
-            continue
+            known[word] = 0
+        else:
+            for i in d[word]:
+                l.append(1 + known[i])
+            known[word] = max(l)
 
-        for s in d[word]:
-            if s in known:
-                t = known[s].insert(0, s)
-            else:
-                return word_in_word(d)
+    return known
     
-            l.append(t)
-    
-        d[word] = max(l)
-
-    return d
-
 
 filename = 'words.txt'
-d = (add_word_lists(create_dict(filename)))
+d = create_dict(filename)
+d = add_word_lists(d)
+t = create_list(d)
+d = word_count(d, t)
+
 
 """
 for key, values in d.items():
     if len(values) > 4:
         print(key, values)
 """
-word_in_word(d)
+
+print(d['time'])
