@@ -74,4 +74,4 @@ for key, values in d.items():
         print(key, values)
 """
 
-print(d['time'])
+print(d['sprites'])
