@@ -12,16 +12,13 @@ def read_text(filename):
 
 def read_to_hist(t, num=2):
     h = dict()
-    for i in range(len(t)):
-        if i >= len(t) - num - 1:
-            continue
+    for i in range(len(t) - num):
+        prefix = ' '.join(t[i:i + num])
+        suffix = t[i + num]
+        if prefix not in h:
+            h[prefix] = [suffix]
         else:
-            prefix = ' '.join(t[i:i + num])
-            suffix = t[i + num + 1]
-            if prefix not in h:
-                h[prefix] = [suffix]
-            else:
-                h[prefix].append(suffix)
+            h[prefix].append(suffix)
 
     return h
 
@@ -40,10 +37,39 @@ def prefix_list(h):
     return t
 
 
+def generate_prefix(t, num):
+    while True:
+        i = random.randint(1, len(t))
+        if t[i][-1] == '.' and t[i + num][0].isupper():
+            return t[i + num]
+
+
 def generate_suffix(prefix, h):
-    return random.choice(h[prefix])
+    if prefix in h:
+        return random.choice(h[prefix])
+    else:
+        return None
 
 
+def generate_text(h, t, num=2):
+    prefix = generate_prefix(t, num)
+    sentence = prefix + ' '
+    while True:
+        suffix = generate_suffix(prefix, h)
+        if (suffix == None or suffix[-1] == '.') and (suffix != 'Mr.' and suffix != 'Mrs.'):
+            sentence += suffix
+            break
+        else:
+            sentence += suffix + ' '
+            sentence.strip()
+            sen = sentence.split()
+            prefix = ' '.join(sen[-num:])
+    
+    return sentence
+
+
+num = 3
 t = read_text('emma.txt')
-h = read_to_hist(t, 2)
-l = prefix_list(h)
+h = read_to_hist(t, num)
+t = prefix_list(h)
+print(generate_text(h, t, num))
