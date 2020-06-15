@@ -104,4 +104,5 @@ def book_random(h):
 
 
 h = process_file('emma.txt')
+print_most_common(h)
 rand_word(freq_list(h), word_list(h), 5)
