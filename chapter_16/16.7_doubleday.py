@@ -24,4 +24,4 @@ def n_day(d1, d2, num=2):
 
 bday_1 = prompt_user()
 bday_2 = prompt_user()
-print(n_day(bday_1, bday_2, 4))
+print(n_day(bday_1, bday_2, 4).strftime("%B %d %Y"))
